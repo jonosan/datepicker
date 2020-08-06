@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html>
+<body>
+
+<h2>DateTime Picker</h2>
+
+<input type="datetime-local" id="birthdaytime" name="birthdaytime">
+<button onclick="setClipboard('birthdaytime')">Set Clipboard</button>
+
+<script>
+function setClipboard(id) {
+    var text = document.getElementById(id).value.toString();
+    var tempInput = document.createElement("input");
+    tempInput.style = "position: absolute; left: -1000px; top: -1000px";
+    tempInput.value = text.substr(0,text.indexOf('T'));
+    document.body.appendChild(tempInput);
+    tempInput.select();
+    document.execCommand("copy");
+    document.body.removeChild(tempInput);
+}
+</script>
+
+</body>
+</html>
